@@ -15,5 +15,3 @@ UCI HAR Dataset/
 # Images
 *.png
 
-# macOS
-__MACOSX/
