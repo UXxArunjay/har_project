@@ -46,22 +46,37 @@ def load_data():
 
 def evaluate_model(y_test, y_pred, model_name):
     print(f"\n--- Evaluation for {model_name} ---")
+    
+    # Activity labels mapping (Dataset uses numbers 1 to 6)
+    activity_labels = ["Walking", "Walking Upstairs", "Walking Downstairs", "Sitting", "Standing", "Laying"]
+    
+    # Print some real examples for the user to see the actual activity names
+    print("\n[Real Examples of Predictions]")
+    for i in range(5):
+        actual = activity_labels[y_test[i] - 1]
+        predicted = activity_labels[y_pred[i] - 1]
+        print(f"Example {i+1} -> Actual: {actual:18} | Predicted: {predicted}")
+        
     acc = accuracy_score(y_test, y_pred)
     prec = precision_score(y_test, y_pred, average='weighted')
     rec = recall_score(y_test, y_pred, average='weighted')
     f1 = f1_score(y_test, y_pred, average='weighted')
     cm = confusion_matrix(y_test, y_pred)
     
-    print(f"Accuracy:  {acc:.4f}")
+    print(f"\nAccuracy:  {acc:.4f}")
     print(f"Precision: {prec:.4f}")
     print(f"Recall:    {rec:.4f}")
     print(f"F1-Score:  {f1:.4f}")
     
-    plt.figure(figsize=(8, 6))
-    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
+    plt.figure(figsize=(10, 8))
+    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', 
+                xticklabels=activity_labels, yticklabels=activity_labels)
     plt.title(f'Confusion Matrix - {model_name}')
-    plt.ylabel('Actual')
-    plt.xlabel('Predicted')
+    plt.ylabel('Actual Activity')
+    plt.xlabel('Predicted Activity')
+    plt.xticks(rotation=45)
+    plt.yticks(rotation=0)
+    plt.tight_layout()
     plt.savefig(f'{model_name}_confusion_matrix.png')
     print(f"Confusion matrix saved as {model_name}_confusion_matrix.png")
 
