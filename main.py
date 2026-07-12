@@ -31,15 +31,15 @@ def download_and_extract():
 def load_data():
     print("Loading data...")
     features_path = os.path.join(EXTRACT_FOLDER, "features.txt")
-    features = pd.read_csv(features_path, sep='\s+', header=None, usecols=[1])[1].values
+    features = pd.read_csv(features_path, sep=r'\s+', header=None, usecols=[1])[1].values
     
     # Load training data
-    X_train = pd.read_csv(os.path.join(EXTRACT_FOLDER, "train", "X_train.txt"), sep='\s+', header=None)
-    y_train = pd.read_csv(os.path.join(EXTRACT_FOLDER, "train", "y_train.txt"), sep='\s+', header=None).values.ravel()
+    X_train = pd.read_csv(os.path.join(EXTRACT_FOLDER, "train", "X_train.txt"), sep=r'\s+', header=None)
+    y_train = pd.read_csv(os.path.join(EXTRACT_FOLDER, "train", "y_train.txt"), sep=r'\s+', header=None).values.ravel()
     
     # Load testing data
-    X_test = pd.read_csv(os.path.join(EXTRACT_FOLDER, "test", "X_test.txt"), sep='\s+', header=None)
-    y_test = pd.read_csv(os.path.join(EXTRACT_FOLDER, "test", "y_test.txt"), sep='\s+', header=None).values.ravel()
+    X_test = pd.read_csv(os.path.join(EXTRACT_FOLDER, "test", "X_test.txt"), sep=r'\s+', header=None)
+    y_test = pd.read_csv(os.path.join(EXTRACT_FOLDER, "test", "y_test.txt"), sep=r'\s+', header=None).values.ravel()
     
     print("Data loaded successfully.")
     return X_train, y_train, X_test, y_test
