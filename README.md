@@ -1,5 +1,7 @@
 # Human Activity Recognition (HAR) Project
 
+Human Activity Recognition (HAR) is an important application of machine learning and pattern recognition that focuses on identifying human activities using sensor data. Modern smartphones and wearable devices contain sensors such as accelerometers and gyroscopes that continuously capture information about human body movement.
+
 This project implements machine learning models (K-Nearest Neighbors and Support Vector Machine) to recognize human activities from smartphone sensor data (accelerometer and gyroscope). 
 The activities classified are: Walking, Walking Upstairs, Walking Downstairs, Sitting, Standing, and Laying.
 
